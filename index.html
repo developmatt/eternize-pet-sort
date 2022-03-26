@@ -5,74 +5,181 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sorteio Eternize PET</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Bem vindos ao sorteio</h1>
 
-    <p id="sort"></p>
-
-
-    <script>
-        //const allAuthors = getAllAuthors();
-        //const selectedAuthor = getRandomItemFromArray(allAuthors);
-
-        shuffleNumbersInPage();
-
-        function shuffleNumbersInPage() {
-            const target = document.querySelector('#sort');
-            const shuffleInterval = setInterval(function() {
-                const author = getRandomItemFromArray(database);
-                target.innerText = author;
-            }, 50);
-
-            setTimeout(function() {
-                clearInterval(shuffleInterval)
-            }, 10000)
+    <style>
+        body,
+        html {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            color: #67426f;
         }
-
-        function getRandomItemFromArray(array) {
-            return array[Math.floor(Math.random() * array.length)];
+        
+        .fundo-story {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
         }
-
-        function getAllAuthors() {
-            let authors = []
-            const commentBoxes = document.querySelectorAll('.Mr508');
-            commentBoxes.forEach(function(commentBox, index) {
-                const author = getCommentAuthor(commentBox);
-                if (author) authors.push(author);
-            });
-            return authors;
+        
+        .fundo-story-2 {
+            left: auto;
+            right: 0;
         }
-
-        function getCommentAuthor(commentBox) {
-            const author = commentBox.querySelector('h3');
-            return author.innerText;
+        
+        .fundo-story-3 {
+            top: auto;
+            bottom: 0;
         }
-
-        function activeRoutineToOpenComments() {
-            const openMoreCommentsInterval = setInterval(function() {
-                try {
-                    const commentBox = document.querySelector('.XQXOT');
-                    if (!commentBox) throw new Error('Comment box not found');
-                    const moreCommentsButtonContainer = commentBox.lastChild;
-                    const button = moreCommentsButtonContainer.querySelector('button');
-                    if (!button) throw new Error('Button not found');
-
-
-                    button.click();
-                } catch (err) {
-                    console.log(err.message);
-                    clearInterval(openMoreCommentsInterval);
-                }
-            }, 3000)
+        
+        .fundo-story-4 {
+            top: auto;
+            bottom: 0;
+            left: auto;
+            right: 0;
         }
+        
+        .logo {
+            display: block;
+            width: 250px;
+            margin: 0 auto;
+        }
+        
+        #sort {
+            color: #fff;
+            background: #674578;
+            width: 200px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            margin: 30px auto;
+        }
+        
+        #sort-button {
+            background: #674578;
+            padding: 12px 20px;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        #sort-button:hover {
+            opacity: 0.8;
+        }
+        
+        .step-1 {
+            opacity: 1;
+            transition: 1s;
+        }
+        
+        .step-1.hidden {
+            opacity: 0;
+        }
+        
+        .loading {
+            width: 100px;
+            margin: 60px auto;
+            display: none;
+        }
+        
+        .step-2 {
+            display: none;
+            transition: opacity 1s;
+        }
+        
+        .step-2.hidden {
+            opacity: 0;
+        }
+        
+        .step-3 {
+            top: 0;
+            left: 0;
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .congratulations-title {
+            font-size: 67px;
+        }
+        
+        .congratulations-pill {
+            display: block;
+            width: min-content;
+            padding: 5px 10px;
+            background: #674578;
+            color: #fff;
+            border-radius: 4px;
+            margin: 0 auto 30px auto;
+        }
+        
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            background: #fff;
+            border-radius: 4px;
+            max-width: 50%;
+        }
+        
+        #victory {
+            font-size: 34px;
+            font-weight: bold;
+        }
+    </style>
+    <img src="/logo-carimbo.png" class="logo" alt="">
 
+    <img src="/fundo-story1.png" alt="" class="fundo-story fundo-story-1">
+    <img src="/fundo-story2.png" alt="" class="fundo-story fundo-story-2">
+    <img src="/fundo-story3.png" alt="" class="fundo-story fundo-story-3">
+    <img src="/fundo-story4.png" alt="" class="fundo-story fundo-story-4">
 
+    <div class="step-1">
+        <h1>Bem vindos ao sorteio Eternize Pet!!!</h1>
 
-        const database = ["zeca_psita_", "zeca_psita_", "zeca_psita_", "ringneck.kiwi", "zeca_psita_", "zeca_psita_", "zeca_psita_", "zeca_psita_", "zeca_psita_", "zeca_psita_", "zeca_psita_", "zeca_psita_", "ringneck.kiwi", "ringneck.kiwi", "zeca_psita_", "zeca_psita_", "zeca_psita_", "zeca_psita_", "zeca_psita_", "zeca_psita_", "ringneck.kiwi", "zeca_psita_", "ringneck.kiwi", "alinunessz", "alinunessz", "lulypontel", "emilia_thayna13", "rafaellaoam", "rafaellaoam", "isa_breitbarg", "rafaellaoam", "claravicsora", "oswaldinho_chihuahua", "rafaellaoam", "emilia_thayna13", "emilia_thayna13", "rafaellaoam", "emilia_thayna13", "oswaldinho_chihuahua", "emilia_thayna13", "mel.guolo", "isamelo31", "isamelo31", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "dudaxx__0", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "oswaldinho_chihuahua", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "rafaellaoam", "emilia_thayna13", "emilia_thayna13", "wanessa2609", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "rafaellaoam", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "oswaldinho_chihuahua", "emilia_thayna13", "joanaxpoa", "lulypontel", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "claravicsora", "rafaellaoam", "emilia_thayna13", "oswaldinho_chihuahua", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "emilia_thayna13", "rafaellaoam", "emilia_thayna13", "emilia_thayna13", "rafaellaoam", "joanaxpoa", "oswaldinho_chihuahua", "dudaxx__0", "mairafrv", "mihh__rodrigues", "mayarapostal", "emilia_thayna13", "mihh__rodrigues", "emilia_thayna13", "mayarapostal", "mairafrv", "emilia_thayna13", "paola_decosta", "emilia_thayna13", "mayarapostal", "emilia_thayna13", "ferracimlarissa", "emilia_thayna13", "oswaldinho_chihuahua", "mairafrv", "paulacmb", "paulacmb", "paulacmb", "paulacmb", "paulacmb", "paulacmb", "paulacmb", "paulacmb", "paulacmb", "paulacmb", "paulacmb", "wanessa2609", "emilia_thayna13", "emilia_thayna13", "isagiandomenico", "emilia_thayna13", "emilia_thayna13", "isagiandomenico", "isagiandomenico", "lhbelina", "monicasmelo", "monicasmelo", "sueslem_paula", "jessis.lopes", "larhyca", "sueslem_paula", "jessis.lopes", "sueslem_paula", "jessis.lopes", "jessis.lopes", "jessis.lopes", "hemilly_ofc_", "hemilly_ofc_", "hemilly_ofc_", "hemilly_ofc_", "hemilly_ofc_", "hemilly_ofc_", "hemilly_ofc_", "hemilly_ofc_", "hemilly_ofc_", "hemilly_ofc_", "hemilly_ofc_", "hemilly_ofc_", "laraenes3", "mimitokuda", "mimitokuda", "mimitokuda", "sobczaack", "sobczaack", "sobczaack", "sobczaack", "xsb_maryy", "sobczaack", "xsb_maryy", "sobczaack", "sobczaack", "sobczaack", "isa_breitbarg", "daay.delfino", "heloisa.brand", "heloisa.brand", "robsilvmaraninchi", "matosmoreiraandrea", "maria_gabi2009", "maria_gabi2009", "lucaas_teixeira", "maria_gabi2009", "maria_gabi2009", "maria_gabi2009", "maria_gabi2009", "calopsitas_apollo", "helo.bonim", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "cinco_psitas", "calopsitas_apollo", "cinco_psitas", "calopsitas_apollo", "liviagomesfeliciano", "cinco_psitas", "cinco_psitas", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "cinco_psitas", "cinco_psitas", "cinco_psitas", "cinco_psitas", "calopsitas_apollo", "leticiabessaf", "leticiabessaf", "calopsitas_apollo", "cinco_psitas", "cinco_psitas", "cinco_psitas", "calopsitas_apollo", "cinco_psitas", "cinco_psitas", "calopsitas_apollo", "calopsitas_apollo", "cinco_psitas", "calopsitas_apollo", "calopsitas_apollo", "cinco_psitas", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitata", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "calopsitas_apollo", "claudiarabello_", "claudiarabello_", "claudiarabello_", "isa.bonim", "claudiarabello_", "isa.bonim", "isa.bonim", "vaniaventola", "vaniaventola", "vaniaventola", "vaniaventola", "luanagomesfeliciano", "bearruda", "camillytawany853", "calopsitta_gigi", "paulacmb", "paulacmb", "laisdecosta", "laisdecosta", "laisdecosta", "_estela_bd_", "edna_daineze", "lindomarosvaldop.kanzler", "vitorgabriel.barbosa.503", "vitorgabriel.barbosa.503", "vitorgabriel.barbosa.503", "vitorgabriel.barbosa.503", "arthuurxi04", "nicolysantos19", "vitiregina", "vitiregina", "vitiregina", "vitiregina", "vitiregina", "gabrielabocciat", "vitiregina", "vitiregina", "gabrielabocciat", "gabrielabocciat", "vitiregina", "gabrielabocciat", "vitiregina", "gabrielabocciat", "gabrielabocciat", "adrianavasconcellosp", "gabrielabocciat", "adrianavasconcellosp", "adrianavasconcellosp", "adrianavasconcellosp", "gabrielabocciat", "lu.__.nna", "lu.__.nna", "lu.__.nna", "lu.__.nna", "lu.__.nna", "lu.__.nna", "angelica_fsouza", "stelagald", "stelagald", "stelagald", "stelagald", "stelagald", "stelagald", "stelagald", "stelagald", "ingridwsouza", "paaty_almeida_", "paaty_almeida_", "paaty_almeida_", "paaty_almeida_", "isadora.fabricio.77", "isadora.fabricio.77", "marcellamoraisf", "marcellamoraisf", "marcellamoraisf", "rafacorreia2530", "rafacorreia2530", "rafacorreia2530", "crystal._calopsita", "crystal._calopsita", "crystal._calopsita", "carolinemunielly", "caiocalou", "carolinemunielly", "carolinemunielly", "carolinemunielly", "rafacorreia2530", "mariaclarinhagalo12", "mariaclarinhagalo12", "mariaclarinhagalo12", "mariaclarinhagalo12", "mariaclarinhagalo12", "blue____s2", "paulodbraga_", "kira_jolie.york", "isa_breitbarg", "be_macedo", "be_macedo", "be_macedo", "be_macedo", "flavnin", "flavnin", "flavnin", "jose_bessa", "jose_bessa", "kelerrodriguessena", "kelerrodriguessena", "kelerrodriguessena", "kelerrodriguessena", "kelerrodriguessena", "kelerrodriguessena", "kelerrodriguessena", "kelerrodriguessena", "kelerrodriguessena", "kelerrodriguessena", "kelerrodriguessena", "kelerrodriguessena", "kelerrodriguessena", "kelerrodriguessena", "kelerrodriguessena", "niceziapatricia", "ana.karolina71", "idealizzarepresentes", "idealizzarepresentes", "idealizzarepresentes", "idealizzarepresentes", "idealizzarepresentes", "idealizzarepresentes", "teddy_o_chede", "teddy_o_chede", "sabrinafernandesdesantana", "sabrinafernandesdesantana", "sabrinafernandesdesantana", "laura.tinti", "laura.tinti", "zoeypapagaiadocongo", "laura.tinti", "emanueledou", "rosimerebatista555", "rosimerebatista555", "bunnyxxmilly", "_biah.bijuss"]
-    </script>
+        <button id="sort-button">Vamos sortear!</button>
+    </div>
+
+    <img src="/loading.gif" class="loading">
+
+    <div class="step-2">
+        <h2>O(a) grande sorteado(a) é</h2>
+
+        <p id="sort">meu_username__</p>
+    </div>
+
+    <div class="step-3">
+        <div class="card">
+            <h1 class="congratulations-title">Parabéns</h1>
+
+            <p id="victory"></p>
+        </div>
+    </div>
+
+    <script src="/js/database.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 
 </html>
